@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ArtDeck</title>
+<link href="/css/styles.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+	<div class="header">
+  		<div class="bucket"> 
+        	<div id="float-right">
+            	<nav class="navbar">
+					<% if(!user){ %>
+						<a href="/users/login">Log in</a>
+						<a href="/users/new">Sign up</a>
+					<% } else { %>
+						<a href="/trades/new">Start a New Trade</a>
+						<a href='/users/profile'>Profile</a>
+						<a href='/users/logout'>Logout</a>
+						<% } %>
+            	</nav>
+            </div>
+            <div id="float-none">
+    			<nav>
+    				<a href="/"><img class="logo_image" src="/images/logo.png" alt="ArtDeck_logo"></a>
+    			</nav>
+    			<hr>
+    		</div>
+            <div>
+            	<nav class="navbar">
+            		<a href="/trades">Trades</a>
+            	</nav>
+				<% if(firstName && lastName){ %>
+					<div class="right_header">
+						Welcome <%= firstName+' '+lastName %>!
+					</div>
+				<% } %> 
+            </div>
+        </div>
+ 	</div>
+	 <% if(errorMessages.length > 0) {%>
+		<% errorMessages.forEach(message=>{%>
+			<div class='error'>
+				<%=message%>
+			</div>
+		<%});%>
+	<%}%>
+	
+	<% if(successMessages.length > 0) {%>
+		<% successMessages.forEach(message=>{%>
+			<div class='success'>
+				<%=message%>
+			</div>
+		<%});%>
+	<%}%> 

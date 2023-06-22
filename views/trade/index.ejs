@@ -1,0 +1,23 @@
+<%- include('../partials/header.ejs') %>
+<div class="bucket">
+<% if(categories.length){ %>
+    <% categories.forEach(category => { %>
+    <div>
+        <h3><%= category %></h3>
+        <ol>
+            <% if(trades.length){ %>
+                <% trades.forEach(trade => { 
+                    if (trade.category === category) { %>
+                        <li><a href="/trades/<%= trade.id %>"><%= trade.title %></a></li>
+                    <% } });
+                } else { %>
+                    <p>There are no trades to display.</p>
+            <% } %>
+        </ol>
+    </div>
+    <% }); %>
+<% } else { %>
+    <p>There are no trade categories to display.</p>
+<% } %>
+</div>
+<%- include('../partials/footer.ejs') %>

@@ -1,0 +1,39 @@
+<%- include('../partials/header.ejs') %>
+<div class="bucket">
+    <form>
+        <div class="bucket">
+            <h3><%= trade.title %></h3>
+            <% if(user == trade.host._id) { %>
+            <div id="float-right">
+                <button type="submit" formmethod="GET" formaction="/trades/<%= trade.id %>/edit">Edit</button>
+                <button type="submit" formmethod="POST" formaction="/trades/<%= trade.id %>?_method=DELETE">Delete</button>
+            </div>
+            <% } %>
+        </div>
+    </form>
+    <div class="wrapper">
+        <div><img class="event_image" src="<%= trade.image %>" alt="image"></div>
+        <div id="justify">
+            <h3>Hosted by <%= trade.host.firstName +' '+ trade.host.lastName %></3>
+            <h3>Year:  <%= trade.year %></h3>
+            <h3>Details:</h3>
+            <p><%= trade.details %></p> 
+            <h3>Price:  $ <%= trade.price %></h3>
+            <h3>Status: <%= trade.status %></h3>
+            <% if(user != trade.host._id) { %>
+            <form>
+            <% var tradewatch="Watch" ; %>
+                    <% if(trade.watchlist.find(pz=> pz == userId) != null) { %>
+                        <% tradewatch="Unwatch" ; %>
+                            <% } %>
+                                <% console.log(tradewatch) %>
+                                    <button class="button" type="submit" formmethod="POST" value="<%=tradewatch%>"
+                                        formaction="/trades/profile/edit/<%=trade._id%>">
+                                        <%=tradewatch%>
+                                    </button>
+                                </form>
+                                <% } %>
+        </div>
+    </div>
+</div>
+<%- include('../partials/footer.ejs') %>

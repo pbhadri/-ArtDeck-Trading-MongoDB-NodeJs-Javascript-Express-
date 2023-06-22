@@ -1,0 +1,60 @@
+<%- include('../partials/header.ejs')%>
+<div class="bucket">
+    <div class="event-heading">
+        <h3><%=user.firstName+' '+ user.lastName%>'s Trades</h3>
+    </div>
+    <% if(trades.length){ %>
+    <table class="profiletable">
+         <tr>
+            <th>&nbsp;&nbsp;Painting name &nbsp;&nbsp;</th>
+            <th>&nbsp;&nbsp;Painting category &nbsp;&nbsp;</th>
+            <th>&nbsp;&nbsp;Status &nbsp;&nbsp;</th>
+            <th>&nbsp;&nbsp;Action &nbsp;&nbsp;</th>
+        </tr>
+    <% trades.forEach(trade => { %>
+        <tr>
+            <td><%= trade.title %></td>
+            <td><%= trade.category %></td>
+            <td><%= trade.status %></td>
+            <td>
+                <form>
+                    <button type="submit" formmethod="GET" formaction="/trades/<%= trade._id %>/edit">Edit</button>
+                    <button type="submit" formmethod="POST" formaction="/trades/<%= trade._id %>?_method=DELETE">Delete</button>
+                </form>
+            </td>
+        </tr>
+    <% }); %>
+    </table>
+    <% } else { %>
+        <p>There are no trade to display.</p>
+    <% } %>
+
+    <div class="event-heading">
+        <h3><%=user.firstName+' '+ user.lastName%>'s Watchlist</h3>
+    </div>
+    <% if(Views.length>0) { %>
+        <table class="profiletable">
+            <tr>
+                <th>&nbsp;&nbsp;Painting name&nbsp;&nbsp;</th>
+                <th>&nbsp;&nbsp;Painting category&nbsp;&nbsp;</th>
+                <th>&nbsp;&nbsp;Status&nbsp;&nbsp;</th>
+                <th>&nbsp;&nbsp;Action&nbsp;&nbsp;</th>
+            </tr>
+                 <% Views.forEach(trade=> { %>
+            <tr>
+                <td style="text-align: center;"><%= trade.title %></td>
+                <td style="text-align: center;"><%= trade.category %></td>
+                <td style="text-align: center;"><%= trade.status %></td>
+                <td>
+                    <form>
+                        <button type="submit" formmethod="POST" formaction="/trades/profile/edit/<%=trade.id%>">Unwatch</button>
+                    </form>
+                </td>
+            </tr>
+                     <% }); %>
+        </table>
+        <% } else { %>
+            <p>There are no Watchlist to display.</p>
+             <% } %>
+</div>
+<%- include('../partials/footer.ejs')%>

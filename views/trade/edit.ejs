@@ -1,0 +1,36 @@
+<%- include('../partials/header.ejs') %>
+<div class="bucket">
+    <form action = '/trades/<%= trade.id%>?_method=PUT' method = 'POST'>
+        <table class="table">
+            <tr>
+                <td><label for="category">Category:</label></td>
+                <td><input type="text" name="category" placeholder="Enter category" id="category" value="<%= trade.category %>" required></td>
+            </tr>
+            <tr>
+                <td><label for="title">Title:</label></td>
+                <td><input type="text" name="title" id="title" placeholder="Enter title" value="<%= trade.title %>" required></td>
+            </tr>
+            <tr>
+                <td><label for="year">Year:</label></td>
+                <td><input type="number" name="year" id="year" placeholder="Enter year" value="<%= trade.year %>" required></td>
+            </tr>
+            <tr>
+                <td><label for="details">Details:</label></td>
+                <td><textarea rows="5" cols="50" name="details" id="details" required placeholder="Enter detail"><%= trade.details %></textarea></td>
+            </tr>
+            <tr>
+                <td><label for="price">Price:</label></td>
+                <td><input type="text" name="price" id="price" placeholder="Enter price" value="<%= trade.price %>" required></td>
+            </tr>
+            <tr>
+                <td><label for="image">Image URL:</label></td>
+                <td><input type="url" name="image" id="image" placeholder="Enter image url" value="<%= trade.image %>" required></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button>Edit Trade</button></td>
+            </tr>        
+        </table> 
+    </form>
+</div>  
+<%- include('../partials/footer.ejs') %>

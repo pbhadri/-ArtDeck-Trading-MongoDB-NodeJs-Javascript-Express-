@@ -1,0 +1,37 @@
+<%- include('../partials/header.ejs') %>
+<div class="bucket">
+    <form action = '/trades' method = 'POST'>
+        <table class="table">
+            <tr>
+                <td><label for="category">Category:</label></td>
+                <td><input type="text" id="category" name="category" placeholder="Enter category" required></td>
+            </tr>
+            <tr>
+                <td><label for="title">Title:</label></td>
+                <td><input type="text" id="title" name="title" placeholder="Enter title" required></td>
+            </tr>
+            <tr>
+                <td><label for="year">Year:</label></td>
+                <td><input type="number" id="year" name="year" placeholder="Enter year" required></td>
+            </tr>
+            <tr>
+                <td><label for="details">Details:</label></td>
+                <td><textarea rows="5" cols="50" name="details" id="details" placeholder="Enter details" required minlength="10"></textarea></td>
+            </tr>
+            <tr>
+                <td><label for="price">Price:</label></td>
+                <td><input type="text" id="price" name="price" placeholder="Enter price in $" required></td>
+            </tr>
+            <tr>
+                <td><label for="image">Image URL</label></td>
+                <td><input type="url" name="image" id="image" placeholder="Enter image url..." required></td>
+            </tr>
+            <input type="hidden" id="status" name="status" value="Available" required>
+            <tr>
+                <td></td>
+                <td><button>Create Trade</button></td>
+            </tr>        
+        </table> 
+    </form>
+</div>  
+<%- include('../partials/footer.ejs') %>
