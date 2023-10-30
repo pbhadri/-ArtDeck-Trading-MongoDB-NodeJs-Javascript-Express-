@@ -1,6 +1,6 @@
 ﻿# -ArtDeck-Trading-MongoDB-NodeJs-Javascript-Express-
-# Designed a trading software where users can buy and trade artwork. 
-# A Dynamic RSVP tool has been added to show users' availabilities for different trading opportunities.
+--> Designed a trading software where users can buy and trade artwork. 
+--> A Dynamic RSVP tool has been added to show users' availabilities for different trading opportunities.
 # Setting Up the ArtDeck Trading Website:
 Downloading and Extracting Files:
 
